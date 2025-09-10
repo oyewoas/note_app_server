@@ -86,7 +86,7 @@ pub async fn create_note_handler(
     let id = uuid::Uuid::new_v4().to_string();
     let query_result = sqlx::query(
         r#"
-        INSERT INTO notes (id, title, content, is_published) VALUES (?, ?, ?)
+        INSERT INTO notes (id, title, content) VALUES (?, ?, ?)
         "#
     )
     .bind(&id)

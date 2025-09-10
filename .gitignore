@@ -3,5 +3,3 @@
 .env
 *.log
 .DS_Store
-migrations/*.sql
-node_modules/

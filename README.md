@@ -9,28 +9,68 @@ This is a backend server for a note-taking application built with Rust.
 
 ## Getting Started
 
+
 ### Prerequisites
-- Rust (https://www.rust-lang.org/tools/install)
-- Docker (for running the database)
+
+- [Rust](https://www.rust-lang.org/tools/install)
+- [Docker](https://www.docker.com/get-started) (for running the database)
+- [sqlx-cli](https://github.com/launchbadge/sqlx/tree/main/sqlx-cli) (for migrations)
+
 
 ### Setup
-1. Clone the repository:
-   ```sh
-git clone <repo-url>
-cd note_app_server
-```
-2. Start the database using Docker Compose:
-   ```sh
+git clone https://github.com/oyewoas/note_app_server
 docker-compose up -d
-```
-3. Run database migrations:
-   ```sh
-make migrate
-```
-4. Build and run the server:
-   ```sh
+make migrate-run
 cargo run
-```
+
+1. Clone the repository:
+
+	```sh
+	git clone https://github.com/oyewoas/note_app_server
+	cd note_app_server
+	```
+
+2. Start the database:
+
+	```sh
+	make docker-up
+	```
+
+3. Run database migrations:
+
+	```sh
+	make migrate-run
+	```
+
+4. (Optional) Add a new migration:
+
+	```sh
+	make migrate-add name=your_migration_name
+	```
+
+5. (Optional) Revert the last migration:
+
+	```sh
+	make migrate-revert
+	```
+
+6. Start the server (with live reload):
+
+	```sh
+	make dev
+	```
+
+	Or run without live reload:
+
+	```sh
+	cargo run
+	```
+
+7. Stop the database:
+
+	```sh
+	make docker-stop
+	```
 
 ## API Endpoints
 - `GET /notes` - List all notes
